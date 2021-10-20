@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+
+    node:
+        container_name: node_api
+        restart: always
+        build: .
+        ports: 
+            - "3002:3002"
+        links: 
+               - mongo
+        volumes: 
+            - .:/app/
+    
+    mongo:
+        image: mongo
+        ports: 
+            - "27018:27017"
+        container_name: mongo-db
+        volumes:
+            - /home/vandel/mongodata:/data/db
